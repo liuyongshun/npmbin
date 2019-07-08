@@ -1,32 +1,19 @@
-const argv = require('yargs').argv
-
-module.exports = yargs.option('name', {
-    type: 'string',
-    describe: '[hostName] Switch host by name',
-    alias: 'n'
+const yargs = require('yargs')
+yargs.options({
+  'run': {
+    alias: 'r',
+    describe: 'run your program',
+    demandOption: true
+  },
+  'path': {
+    alias: 'p',
+    describe: 'provide a path to file',
+    demandOption: true
+  },
+  'spec': {
+    alias: 's',
+    describe: 'program specifications'
+  }
 })
-.option('list', {
-    boolean: true,
-    default: false,
-    describe: 'Show hostName list',
-    alias: 'l'
-})
-.option('closeAll', {
-    boolean: true,
-    default: false,
-    describe: 'Close all hosts',
-    alias: 'q'
-})
-.option('close', {
-    type: 'string',
-    describe: 'close certain host',
-    alias: 'c'
-})
-.example('chost -n localhost', 'Switch localhost successfully!')
-.example('chost -c localhost', 'Close localhost successfully!')
-.example('chost -q', 'Close all hosts successfully!')
-.example('chost -l', 'All host name list: xxx')
-.help('h')
-.alias('h', 'help')
-.epilog('copyright 2017')
+.help()
 .argv
