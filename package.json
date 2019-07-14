@@ -21,5 +21,8 @@
   "homepage": "https://github.com/liuyongshun/npmbin#readme",
   "dependencies": {
     "yargs": "^13.2.4"
+  },
+  "devDependencies": {
+    "find-up": "^4.1.0"
   }
 }
