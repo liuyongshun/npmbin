@@ -2,7 +2,6 @@ const fs = require('fs');
 const findUp = require('find-up');
 const configPath = findUp.sync(['.tree', '.tree.json']);
 const config = configPath ? JSON.parse(fs.readFileSync(configPath)) : {};
-
 // get dir
 function getDir (dir) {
   return fs.readdirSync(dir, (err, files) => {
