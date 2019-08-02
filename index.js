@@ -18,26 +18,39 @@ let init = '';
 // other way
 yargs
 .config(util.config)
-.command({
-  // must be (configure <key> [value]), if not, handler arguments wont't get key and value correct
-  command: 'configure <key> [value]',
-  // alias for set config key and value，('command' config aa 3),handler method get key: aa , vakue: 3
-  aliases: ['config', 'cfg'],
-  desc: 'Set a config variable',
-  builder: (yargs) => yargs.default('value', 'true'),
-  handler: (argv) => {
-    // console.log(util.readFile('./'))
-    console.log(argv, 'handler')
-  // keep consistent with expectations
-  // init = init.replace(/\/$/, '');
-// util.writeFile(getTree(init))
-  }
+.option('zz', {
+  alias: 'z',
+  describe: 'create a file'
 })
-.demandCommand()
+.command('', 'generate the file', (argv) => {
+  console.log(argv)
+
+}, (argv) => {
+
+})
+// .command({
+//   // must be (configure <key> [value]), if not, handler arguments wont't get key and value correct
+//   command: 'configure <key> [value]',
+//   // alias for set config key and value，('command' config aa 3),handler method get key: aa , vakue: 3
+//   aliases: ['config', 'cfg'],
+//   desc: 'Set a config variable',
+//   builder: (yargs) => {
+//     console.log(yargs, 'kkkk')
+//     console.log(getTree('./'))
+//     yargs.default('value', 'true')
+//   },
+//   handler: (argv) => {
+//     // console.log(util.readFile('./'))
+//     console.log(argv, 'handler')
+//   // keep consistent with expectations
+//   // init = init.replace(/\/$/, '');
+// // util.writeFile(getTree(init))
+//   }
+// })
+// .demandCommand()
 .help('h')
 .argv
 
-console.log(yargs.parse(), 'fffffzzff')
 function getTree (dir) {
   const record = []
   if (util.isFile(dir)) return;
