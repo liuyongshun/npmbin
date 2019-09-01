@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const yargs = require('yargs');
+const fs = require('fs');
 const findUp = require('find-up');
 const configPath = findUp.sync(['.tree', '.tree.json']);
 const config = configPath ? JSON.parse(fs.readFileSync(configPath)) : {};
@@ -22,7 +23,7 @@ tree('./test', (res) => {
 
 // other way
 yargs
-.config(util.config)
+.config(config)
 .option('zz', {
   alias: 'z',
   describe: 'create a file'
