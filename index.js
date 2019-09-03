@@ -4,7 +4,7 @@ const fs = require('fs');
 const findUp = require('find-up');
 const configPath = findUp.sync(['.tree', '.tree.json']);
 const config = configPath ? JSON.parse(fs.readFileSync(configPath)) : {};
-
+const path = require('path');
 const tree = require('./util/tree');
 
 // The first element in the array is considered the canonical command,
