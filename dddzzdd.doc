@@ -1,0 +1,43 @@
+[
+	{
+		"name": ".DS_Store",
+		"dir": "./test/.DS_Store",
+		"children": null
+	},
+	{
+		"name": "1level1.json",
+		"dir": "./test/1level1.json",
+		"children": null
+	},
+	{
+		"name": "1level2.json",
+		"dir": "./test/1level2.json",
+		"children": null
+	},
+	{
+		"name": "1level3.md",
+		"dir": "./test/1level3.md",
+		"children": null
+	},
+	{
+		"name": "1level4.js",
+		"dir": "./test/1level4.js",
+		"children": null
+	},
+	{
+		"name": "subtest",
+		"dir": "./test/subtest",
+		"children": [
+			{
+				"name": "2level1.json",
+				"dir": "./test/subtest/2level1.json",
+				"children": null
+			},
+			{
+				"name": "2level2.md",
+				"dir": "./test/subtest/2level2.md",
+				"children": null
+			}
+		]
+	}
+]

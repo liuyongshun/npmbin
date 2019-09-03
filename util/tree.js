@@ -34,7 +34,8 @@ function getTree (dir) {
 
 function carryOut (url) {
   return new Promise((resolve, reject) => {
-    util.writeFile(getTree('./test'), 'dddzzdd', 'doc')
+    getTree('./test')
+    // util.writeFile(, 'dddzzdd', 'doc')
     resolve(output)
   })
 }

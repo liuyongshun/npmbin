@@ -2,12 +2,9 @@
 
 ### NODE API
 
-
 #### 1、 fs.Stats 对象提供有关文件的信息。
 
-
 1. fs.readdirSync()
-
 
 #### 2、process 对象是全局变量，提供当前 Node.js 进程的信息并对其进行控制。无需使用 require()。
 
@@ -38,3 +35,5 @@ $ node process-args.js one two=three four
 4: four
 
 ```
+
+#### 3、path 对象
