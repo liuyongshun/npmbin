@@ -20,7 +20,7 @@ const tree = require('./util/tree');
 
 // other way
 if (!process.argv[2]) {
-  tree('./test').then(res => {
+  tree('./').then(res => {
     console.log(res)
   })
 } else {

@@ -8,6 +8,9 @@ function getTree (dir) {
   if (util.isFile(dir)) return;
   // get sub dir
   const files = util.getDir(dir);
+  console.log(files, 'kkkkkkkkkkkkkkkk')
+  console.log(dir, 'zzzzz')
+  process.exit()
   // iteration sub dir and deal with data to get we want
   files.map((file, index) => {
     let subDir = `${dir}/${file}`;
@@ -32,9 +35,9 @@ function getTree (dir) {
   return record
 }
 
-function carryOut (url) {
+function carryOut (url, options) {
   return new Promise((resolve, reject) => {
-    getTree('./test')
+    getTree(url)
     // util.writeFile(, 'dddzzdd', 'doc')
     resolve(output)
   })
