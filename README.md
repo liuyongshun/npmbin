@@ -44,6 +44,10 @@ process.cwd() 方法返回 Node.js 进程的当前工作目录。
 
 例如我们在package.json的目录执行依赖中的脚本，但是需要获取package.json的路径。
 
+**2.1.3、 process.exit()**
+
+退出node执行。
+
 **2.2、 `__dirname`同`path.dirname()`**
 
 path.dirname() 方法返回 path 的目录名，尾部的目录分隔符将被忽略。
@@ -71,3 +75,42 @@ console.log(__filename)
 ```
 
 #### 3、path 对象
+
+
+#### 4、 fs模块
+
+**PS: 如果你想知道文件的详细信息，或者判断一个名字是文件还是目录，如下内容**
+
+**4.1、 异步： fs.stat(path[, options], callback)，可以用来获取文件的信息内容**
+
+path: 文件的路径。
+
+options: 返回的 fs.Stats 对象中的数值是否应为 bigint 型。默认值: false。
+
+callback: 
+
+ &#x3000;参数： err， 如果出现错误，则 err.code 将是常见系统错误之一。  
+
+ &#x3000;参数：stats： stats 是一个 fs.Stats 对象，关于文件的信息。 [地址](http://nodejs.cn/api/fs.html#fs_class_fs_stats)
+
+```
+fs.stat(dir, (err, stats) => {
+  console.log(err, stats, 'kzzzzz')
+})
+```
+
+**4.2、 同步： fs.statSync(path[, options]) ,直接返回fs.Stats 对象**
+
+path: 文件的路径。
+
+options: 返回的 fs.Stats 对象中的数值是否应为 bigint 型。默认值: false。
+
+```
+fs.statSync(dir).isFile() // true or false
+```
+
+**4.3、 fs.Stats对象的方法**
+
+- stats.isDirectory() ： true 文件系统目录 
+
+- stats.isFile() ： true 常规文件 
