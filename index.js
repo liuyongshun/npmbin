@@ -33,7 +33,7 @@ let argv = yargs
 if (argv._.length === 0) {
   let obj = lib.filterAttr(argv);
   let url = obj.dir || obj.d || './';
-  tree(url, obj).then(res => {
+  tree.carryOut(url, obj).then(res => {
     console.log(res);
   });
 }

@@ -23,7 +23,7 @@ class ObjUtil {
   // get user dir
   readFile (dir) {
     const all = fs.readFileSync(dir, 'utf-8');
-    return all
+    return all;
   }
 
   // generate the file
