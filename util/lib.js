@@ -8,6 +8,8 @@ class CommonMethods {
     })
     if (temp.ignore) temp.i = temp.ignore;
     if (temp.file) temp.f = temp.file;
+    if (temp.name) temp.n = temp.name;
+    if (temp.type) temp.t = temp.type;
     return temp;
   }
   ignoreFile (dir, ignore, isFile) {

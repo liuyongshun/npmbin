@@ -23,7 +23,7 @@ module.exports = {
     let obj = lib.filterAttr(argv);
     let url = obj.dir || obj.d || './';
     tree.genFile(url, obj).then(res => {
-      util.writeFile(res);
+      util.writeFile(res, obj.n, obj.t);
     })
   }
 }
