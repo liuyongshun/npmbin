@@ -114,3 +114,23 @@ fs.statSync(dir).isFile() // true or false
 - stats.isDirectory() ： true 文件系统目录 
 
 - stats.isFile() ： true 常规文件 
+
+**4.4、 fs.readdir(path[, options], callback)， 异步读取目录内容**
+
+- path:
+
+- options:
+
+&#x3000;encoding: 默认utf-8编码
+
+&#x3000;withFileTypes： 默认值false。设置为 true，则返回的结果将包含 fs.Dirent 对象。
+
+- callback: 
+
+&#x3000;err: 错误提示
+
+&#x3000;files: 内容数组
+
+**4.5、 fs.readdirSync(path[, options])，同步读取目录内容**
+
+参数同异步

@@ -28,10 +28,12 @@ class ObjUtil {
 
   // generate the file
   writeFile (tree, name = 'tree', type = 'json') {
-    const treeFile = JSON.stringify(tree, '', '\t');
-    fs.writeFile(`${name}.${type}`, treeFile, 'utf8', (err) => {
-      if (err) throw err;
-      console.log(`Generate the file: ${name}.${type}`);
+    return new Promise((resolve, reject) => {
+      const treeFile = JSON.stringify(tree, '', '\t');
+      fs.writeFile(`${name}.${type}`, treeFile, 'utf8', (err) => {
+        if (err) throw err;
+        resolve(`Generate the file: ${name}.${type}`);
+      });
     });
   }
 }

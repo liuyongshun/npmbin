@@ -15,7 +15,6 @@ function getTree (dir, options, start) {
   // get sub dir
   let files = util.getDir(dir);
   if (start) firstLevelOfLast = files[files.length - 1];
-  console.log(firstLevelOfLast,' ffkkkkkzzzzlll')
   // iteration sub dir and deal with data to get we want
   files.map((file, index) => {
     let subDir = `${dir}/${file}`;
