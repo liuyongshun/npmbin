@@ -14,7 +14,7 @@ const configPath = findUp.sync(['.tree', '.tree.json']);
 const config = configPath ? JSON.parse(fs.readFileSync(configPath)) : {};
 
 let argv = yargs
-.config(config)
+.config(config.global)
 .option('ignore', {
   alias: 'i',
   describe: 'ignore folder'

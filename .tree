@@ -1,4 +1,14 @@
 {
-  "path": "./",
-  "type": "file"
+  "analyze": {
+
+  },
+  "generate": {
+    "name": "dirTree",
+    "type": "js"
+  },
+  "global": {
+    "ignore": "yfile",
+    "dir": "./test",
+    "file": "false"
+  }
 }

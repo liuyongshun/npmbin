@@ -1,3 +1,9 @@
+const fs = require('fs');
+const findUp = require('find-up');
+
+const configPath = findUp.sync(['.tree', '.tree.json']);
+const config = configPath ? JSON.parse(fs.readFileSync(configPath)) : {};
+
 const util = require('../util/index.js');
 const lib = require('../util/lib.js');
 const tree = require('../util/tree.js');
@@ -9,6 +15,7 @@ module.exports = {
   desc: 'generate file',
   builder: (yargs) => {
     return yargs
+    .config(config.generate)
     .option('name', {
       alias: 'n',
       describe: 'generate file of name',
@@ -48,6 +55,8 @@ module.exports = {
              process.exit();
           }
         });
+      } else {
+        util.writeFile(res, obj.n, obj.t);
       }
     })
   }
