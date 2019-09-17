@@ -134,3 +134,13 @@ fs.statSync(dir).isFile() // true or false
 **4.5、 fs.readdirSync(path[, options])，同步读取目录内容**
 
 参数同异步
+
+
+```
+// let process = require('child_process');
+//  process.exec('rm -fr '+ './zz' +'*',function(err){
+
+//   console.log(err)      //当成功是error是null
+
+// })
+```

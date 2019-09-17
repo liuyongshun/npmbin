@@ -8,11 +8,13 @@ const findUp = require('find-up');
 const tree = require('./util/tree.js');
 const lib = require('./util/lib.js');
 const command = require('./command/commandtree.js');
+const analyze = require('./command/commandanalyze.js');
 
 const configPath = findUp.sync(['.tree', '.tree.json']);
 const config = configPath ? JSON.parse(fs.readFileSync(configPath)) : {};
 
 let argv = yargs
+.config(config)
 .option('ignore', {
   alias: 'i',
   describe: 'ignore folder'
@@ -27,6 +29,7 @@ let argv = yargs
   default: false
 })
 .command(command)
+.command(analyze)
 .help('h')
 .argv
 
