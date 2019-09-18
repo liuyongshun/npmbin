@@ -17,15 +17,15 @@ let argv = yargs
 .config(config.global)
 .option('ignore', {
   alias: 'i',
-  describe: 'ignore folder'
+  describe: '要忽略的文件或目录名'
 })
 .option('dir', {
   alias: 'd',
-  describe: 'custom dir'
+  describe: '目标目录'
 })
 .option('file', {
   alias: 'f',
-  describe: 'ignore for file or dir',
+  describe: '忽略的是文件还是目录，与i参数配合使用',
   default: false
 })
 .command(command)

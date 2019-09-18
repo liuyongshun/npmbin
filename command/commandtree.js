@@ -18,12 +18,12 @@ module.exports = {
     .config(config.generate)
     .option('name', {
       alias: 'n',
-      describe: 'generate file of name',
+      describe: '生成文件的名称',
       default: 'tree'
     })
     .option('type', {
       alias: 't',
-      describe: 'generate file of type',
+      describe: '生成文件的类型',
       default: 'json'
     })
   },
