@@ -29,6 +29,32 @@ module.exports = {
     let obj = lib.filterAttr(argv);
     let url = obj.dir || obj.d || './';
     analyze(url, obj).then(res => {
+      let exists = util.getDir(url);
+      let fileName = `${obj.n}.${obj.t}`;
+
+      if (exists.includes(fileName)) {
+        console.warn(colors.green(`${fileName}文件夹已存在，是否覆盖？：y/n`));
+
+        process.stdin.setEncoding('utf8');
+        process.stdin.on('data', async input => {
+          let chunk = input.replace(/\s/g, '');
+
+          if (chunk.toLowerCase() === 'y') {
+            let tip = await util.writeFile(res, obj.n, obj.t);
+            console.log(colors.green(tip));
+            process.exit();
+
+          } else if (chunk.toLowerCase() === 'n') {
+            process.exit();
+
+          } else {
+             console.warn(colors.red('请输入正确指令'));
+             process.exit();
+          }
+        });
+      } else {
+        util.writeFile(res, obj.n, obj.t);
+      }
       util.writeFile(res, obj.n, obj.t);
     })
   }
