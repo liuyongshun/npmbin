@@ -20,7 +20,7 @@ function genMd (dir, options) {
       count ++;
       let name = util.getDirName(subDir);
       output += `#### ${count}、 组件${name}\n\n**组件截图：**\n\n![]()\n\n|参数名|参数类型|字段描述|是否必填|默认值|\n|:-----|:-----|:-----|:-----|:-----|\n|  |  |  |  |  |\n\n**使用示例：**\n\n\`\`\`\n\`\`\`\n\n`;
-    } else if (options.deep) {
+    } else if (JSON.parse(options.deep)) {
       genMd(subDir, options);
     }
   });

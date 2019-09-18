@@ -15,10 +15,8 @@ module.exports = {
   builder: (yargs) => {
     return yargs
     // .config(config)
-    .option('rule', {
-      alias: 'r',
-      describe: 'The ruler of name',
-      default: 'lowerCamel'
+    .option('dest', {
+      describe: '指定生成的目录'
     })
      .option('deep', {
       describe: '深度遍历文件',
