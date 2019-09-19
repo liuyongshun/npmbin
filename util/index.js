@@ -27,15 +27,28 @@ class ObjUtil {
   }
 
   // generate the file
-  writeFile (data, name = 'tree', type = 'json') {
+  writeFile (data, name = 'tree', type = 'json', dir) {
     return new Promise((resolve, reject) => {
-      let dealData = ''
+      let dealData = '';
       if (typeof data !== 'string') {
         dealData = JSON.stringify(data, '', '\t');
       } else {
-        dealData = data
+        dealData = data;
       }
-      fs.writeFile(`${name}.${type}`, dealData, 'utf8', (err) => {
+      if (dir) {
+        let patt = /^(\.\/)/;
+        if (patt.test(dir)) dir = dir.substr(2);
+        let arr = dir.split('/');
+        let rDir = '';
+
+        arr.forEach((n, i) => {
+          rDir = `${i === 0 ? '' : '/'}${n}`;
+          if (!fs.existsSync(rDir)) {
+            fs.mkdirSync(rDir);
+          }
+        })
+      }
+      fs.writeFile(`${dir}/${name}.${type}`, dealData, 'utf8', (err) => {
         if (err) throw err;
         resolve(`Generate the file: ${name}.${type}`);
       });

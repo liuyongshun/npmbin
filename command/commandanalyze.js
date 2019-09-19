@@ -16,7 +16,8 @@ module.exports = {
     return yargs
     // .config(config)
     .option('dest', {
-      describe: '指定生成的目录'
+      describe: '指定生成的目录',
+      default: './_doc'
     })
      .option('deep', {
       describe: '深度遍历文件',
@@ -30,7 +31,7 @@ module.exports = {
       let exists = util.getDir(url);
       let fileName = `${obj.n}.${obj.t}`;
 
-      if (exists.includes(fileName)) {
+      if (true) {
         console.warn(colors.green(`${fileName}文件夹已存在，是否覆盖？：y/n`));
 
         process.stdin.setEncoding('utf8');
@@ -38,7 +39,7 @@ module.exports = {
           let chunk = input.replace(/\s/g, '');
 
           if (chunk.toLowerCase() === 'y') {
-            let tip = await util.writeFile(res, obj.n, obj.t);
+            let tip = await util.writeFile(res, obj.n, obj.t, obj.dest);
             console.log(colors.green(tip));
             process.exit();
 
@@ -51,9 +52,8 @@ module.exports = {
           }
         });
       } else {
-        util.writeFile(res, obj.n, obj.t);
+        util.writeFile(res, obj.n, obj.t, obj.dest);
       }
-      util.writeFile(res, obj.n, obj.t);
     })
   }
 }
