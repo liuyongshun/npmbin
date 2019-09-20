@@ -16,8 +16,25 @@ class ObjUtil {
 
   // get dir name
   getDirName (dir) {
-    const dealDir = dir.substr(dir.lastIndexOf('/')+1, dir.length)
+    const dealDir = dir.substr(dir.lastIndexOf('/')+1, dir.length);
     return dealDir;
+  }
+
+  // deal url
+  dealUrl (url) {
+    let patt = /^(\.\/)/;
+    if (patt.test(url)) url = url.substr(2);
+    return url;
+  }
+
+  // generate dir
+  genDir (dir) {
+    let arr = this.dealUrl(dir).split('/');
+    let rDir = '';
+    arr.forEach((n, i) => {
+      rDir += `${i === 0 ? '' : '/'}${n}`;
+      if (!fs.existsSync(rDir)) fs.mkdirSync(rDir);
+    })
   }
 
   // get user dir
@@ -29,30 +46,17 @@ class ObjUtil {
   // generate the file
   writeFile (data, name = 'tree', type = 'json', dir) {
     return new Promise((resolve, reject) => {
-      let dealData = '';
+      let dealData = data;
       if (typeof data !== 'string') {
         dealData = JSON.stringify(data, '', '\t');
-      } else {
-        dealData = data;
       }
-      if (dir) {
-        let patt = /^(\.\/)/;
-        if (patt.test(dir)) dir = dir.substr(2);
-        let arr = dir.split('/');
-        let rDir = '';
+      if (dir) this.genDir(dir);
 
-        arr.forEach((n, i) => {
-          rDir = `${i === 0 ? '' : '/'}${n}`;
-          if (!fs.existsSync(rDir)) {
-            fs.mkdirSync(rDir);
-          }
-        })
-      }
       fs.writeFile(`${dir}/${name}.${type}`, dealData, 'utf8', (err) => {
         if (err) throw err;
         resolve(`Generate the file: ${name}.${type}`);
-      });
-    });
+      })
+    })
   }
 }
 

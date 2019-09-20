@@ -7,6 +7,7 @@ const config = configPath ? JSON.parse(fs.readFileSync(configPath)) : {};
 const util = require('../util/index.js');
 const lib = require('../util/lib.js');
 const analyze = require('../util/analyze.js');
+const colors = require('colors');
 
 module.exports = {
   command: 'analyze',
@@ -28,11 +29,11 @@ module.exports = {
     let obj = lib.filterAttr(argv);
     let url = obj.dir || obj.d || './';
     analyze(url, obj).then(res => {
-      let exists = util.getDir(url);
-      let fileName = `${obj.n}.${obj.t}`;
+      let url = util.dealUrl(obj.dest);
+      let file = `${url}/${obj.n}.${obj.t}`;
 
-      if (true) {
-        console.warn(colors.green(`${fileName}文件夹已存在，是否覆盖？：y/n`));
+      if (fs.existsSync(file)) {
+        console.warn(colors.green(`${obj.n}.${obj.t}文件夹已存在，是否覆盖？：y/n`));
 
         process.stdin.setEncoding('utf8');
         process.stdin.on('data', async input => {
