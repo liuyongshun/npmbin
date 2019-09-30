@@ -1,6 +1,7 @@
 {
   "analyze": {
-
+  "dest": "./doc",
+  "deep": "true"
   },
   "generate": {
     "name": "dirTree",
@@ -8,7 +9,7 @@
   },
   "global": {
     "ignore": "yfile",
-    "dir": "./test",
+    "dir": "./util",
     "file": "false"
   }
 }

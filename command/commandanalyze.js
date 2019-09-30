@@ -15,7 +15,7 @@ module.exports = {
   desc: 'analyze file',
   builder: (yargs) => {
     return yargs
-    // .config(config)
+    .config(config.analyze)
     .option('dest', {
       describe: '指定生成的目录',
       default: './_doc'
