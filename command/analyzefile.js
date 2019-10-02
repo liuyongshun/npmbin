@@ -6,44 +6,44 @@ const config = configPath ? JSON.parse(fs.readFileSync(configPath)) : {};
 
 const util = require('../util/index.js');
 const lib = require('../util/lib.js');
-const analyze = require('../util/analyze.js');
+const tree = require('../util/tree.js');
 const colors = require('colors');
 
 module.exports = {
-  command: 'analyze',
-  aliases: ['analyze', 'a'],
-  desc: 'analyze file',
+  command: 'gen',
+  aliases: ['gen', 'g'],
+  desc: 'generate file',
   builder: (yargs) => {
     return yargs
-    // .config(config)
-    .option('dest', {
-      describe: '指定生成的目录',
-      default: './_doc'
+    .config(config.generate)
+    .option('name', {
+      alias: 'n',
+      describe: '生成文件的名称',
+      default: 'tree'
     })
-    .option('deep', {
-      describe: '深度遍历文件',
-      default: false
+    .option('type', {
+      alias: 't',
+      describe: '生成文件的类型',
+      default: 'json'
     })
-    // .option('firstLine', {
-    //   describe: '根据首行注释部分生成md文件'
-    // })
   },
   handler: (argv) => {
     let obj = lib.filterAttr(argv);
     let url = obj.dir || obj.d || './';
-    analyze(url, obj).then(res => {
-      let url = util.dealUrl(obj.dest);
-      let file = `${url}/${obj.n}.${obj.t}`;
 
-      if (fs.existsSync(file)) {
-        console.warn(colors.green(`${obj.n}.${obj.t}文件夹已存在，是否覆盖？：y/n`));
+    tree.genFile(url, obj).then(res => {
+      let exists = util.getDir(process.cwd());
+      let fileName = `${obj.n}.${obj.t}`;
+
+      if (exists.includes(fileName)) {
+        console.warn(colors.green(`${fileName}文件夹已存在，是否覆盖？：y/n`));
 
         process.stdin.setEncoding('utf8');
         process.stdin.on('data', async input => {
           let chunk = input.replace(/\s/g, '');
 
           if (chunk.toLowerCase() === 'y') {
-            let tip = await util.writeFile(res, obj.n, obj.t, obj.dest);
+            let tip = await util.writeFile(res, obj.n, obj.t);
             console.log(colors.green(tip));
             process.exit();
 
@@ -56,7 +56,7 @@ module.exports = {
           }
         });
       } else {
-        util.writeFile(res, obj.n, obj.t, obj.dest);
+        util.writeFile(res, obj.n, obj.t);
       }
     })
   }
