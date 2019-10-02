@@ -135,6 +135,8 @@ fs.statSync(dir).isFile() // true or false
 
 参数同异步
 
+**4.6、 fs.existsSync()**
+
 
 ```
 // let process = require('child_process');
