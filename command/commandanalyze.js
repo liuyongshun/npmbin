@@ -15,7 +15,7 @@ module.exports = {
   desc: 'analyze file',
   builder: (yargs) => {
     return yargs
-    .config(config.analyze)
+    .config(config.analyze || {})
     .option('dest', {
       describe: '指定生成的目录',
       default: './_doc'
@@ -24,9 +24,21 @@ module.exports = {
       describe: '深度遍历文件',
       default: false
     })
-    // .option('firstLine', {
-    //   describe: '根据首行注释部分生成md文件'
-    // })
+    .option('name', {
+      alias: 'n',
+      describe: '生成文件的名称',
+      default: 'readme'
+    })
+    .option('type', {
+      alias: 't',
+      describe: '生成文件的类型',
+      default: 'md'
+    })
+    .option('sign', {
+      alias: 's',
+      describe: '根据文件呢首行标识分类生成md说明文档'
+    })
+    .help('h')
   },
   handler: (argv) => {
     let obj = lib.filterAttr(argv);

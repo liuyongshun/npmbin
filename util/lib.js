@@ -10,15 +10,8 @@ class CommonMethods {
     if (temp.file) temp.f = temp.file;
     if (temp.name) temp.n = temp.name;
     if (temp.type) temp.t = temp.type;
+    if (temp.sign) temp.s = temp.sign;
     return temp;
-  }
-  ignoreFile (dir, ignore, isFile) {
-    console.log(dir)
-    let subDir = `${dir}/${file}`;
-    dir.forEach(n => {
-      console.log(util.isFile(n), '3333')
-    })
-    return dir
   }
 }
 

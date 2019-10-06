@@ -17,11 +17,13 @@ let argv = yargs
 .config(config.global)
 .option('ignore', {
   alias: 'i',
-  describe: '要忽略的文件或目录名'
+  describe: '要忽略的文件或目录名',
+  default: 'node_modules,.git'
 })
 .option('dir', {
   alias: 'd',
-  describe: '目标目录'
+  describe: '需要处理的目标目录',
+  default: './'
 })
 .option('file', {
   alias: 'f',

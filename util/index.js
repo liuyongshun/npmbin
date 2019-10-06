@@ -50,9 +50,12 @@ class ObjUtil {
       if (typeof data !== 'string') {
         dealData = JSON.stringify(data, '', '\t');
       }
-      if (dir) this.genDir(dir);
-
-      fs.writeFile(`${dir}/${name}.${type}`, dealData, 'utf8', (err) => {
+      let genUrl = `${name}.${type}`;
+      if (dir) {
+        this.genDir(dir);
+        genUrl = `${dir}/${name}.${type}`;
+      }
+      fs.writeFile(genUrl, dealData, 'utf8', (err) => {
         if (err) throw err;
         resolve(`Generate the file: ${name}.${type}`);
       })

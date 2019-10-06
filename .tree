@@ -1,15 +1,18 @@
 {
   "analyze": {
-  "dest": "./doc",
-  "deep": "true"
+  "dest": "./_doc",
+  "deep": "false",
+  "type": "md",
+  "name": "readme",
+  "sign": "node"
   },
   "generate": {
     "name": "dirTree",
     "type": "js"
   },
   "global": {
-    "ignore": "yfile",
-    "dir": "./util",
+    "ignore": "node_modules,.git",
+    "dir": "./",
     "file": "false"
   }
 }

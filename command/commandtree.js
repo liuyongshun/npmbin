@@ -15,7 +15,7 @@ module.exports = {
   desc: 'generate file',
   builder: (yargs) => {
     return yargs
-    .config(config.generate)
+    .config(config.generate || {})
     .option('name', {
       alias: 'n',
       describe: '生成文件的名称',
@@ -26,6 +26,7 @@ module.exports = {
       describe: '生成文件的类型',
       default: 'json'
     })
+    .help('h')
   },
   handler: (argv) => {
     let obj = lib.filterAttr(argv);
